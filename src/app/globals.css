@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@300;400;500;600;700&family=Share+Tech+Mono&display=swap');
+
 *,
 *::before,
 *::after {
@@ -8,7 +10,8 @@ html,
 body {
   margin: 0;
   padding: 0;
-  background: #000;
+  background: #050A12;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
 }
