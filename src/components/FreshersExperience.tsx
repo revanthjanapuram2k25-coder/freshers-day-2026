@@ -10,7 +10,7 @@ const EVENT = {
   year: "2026",
   date: "10 OCTOBER 2026",
   day: "SATURDAY",
-  time: "9:00 AM TO 1:00 PM",
+  time: "1:00 PM TO 3:00 PM",
   venue: "MECHANICAL SEMINAR HALL",
   department: "DEPARTMENT OF MECHANICAL ENGINEERING",
   college: "NARAYANA ENGINEERING COLLEGE (AUTONOMOUS), NELLORE",
@@ -171,6 +171,7 @@ function RealisticChromeGear({
         width: size,
         height: size,
         animation: `${clockwise ? "gearRotateCW" : "gearRotateCCW"} ${speed}s linear infinite`,
+        transformOrigin: "center center",
         ...style,
       }}
     >
@@ -1337,13 +1338,13 @@ export default function FreshersExperience({ mode = "auto" }: { mode?: "mobile" 
 
   const handleShareWhatsApp = useCallback(() => {
     if (typeof window !== "undefined") {
-      const msg = `⚙️ *FRESHERS PARTY 2026*\n🏛️ *Dept. of Mechanical Engineering*\n📍 Mechanical Seminar Hall\n🗓️ 10 OCTOBER 2026 (9:00 AM - 1:00 PM)\n\n👉 Open your interactive invitation:\n${window.location.href}`;
+      const msg = `⚙️ *FRESHERS PARTY 2026*\n🏛️ *Dept. of Mechanical Engineering*\n📍 Mechanical Seminar Hall\n🗓️ 10 OCTOBER 2026 (1:00 PM - 3:00 PM)\n\n👉 Open your interactive invitation:\n${window.location.href}`;
       window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(msg)}`, "_blank");
     }
   }, []);
 
   const handleAddCalendar = useCallback(() => {
-    const calendarUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent("Mechanical Engineering Freshers Party 2026")}&dates=20261010T033000Z/20261010T073000Z&details=${encodeURIComponent("Department of Mechanical Engineering Freshers Party 2026. Where gears turn and legends begin!")}&location=${encodeURIComponent("Mechanical Seminar Hall, Narayana Engineering College, Nellore")}`;
+    const calendarUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent("Mechanical Engineering Freshers Party 2026")}&dates=20261010T073000Z/20261010T093000Z&details=${encodeURIComponent("Department of Mechanical Engineering Freshers Party 2026. Where gears turn and legends begin!")}&location=${encodeURIComponent("Mechanical Seminar Hall, Narayana Engineering College, Nellore")}`;
     window.open(calendarUrl, "_blank");
   }, []);
 
@@ -2292,32 +2293,38 @@ export default function FreshersExperience({ mode = "auto" }: { mode?: "mobile" 
           CSS STYLES (REALISTIC BRUSHED STEEL & CHROME THEME)
       ══════════════════════════════════════════════════════════════ */}
       <style jsx global>{`
-        /* ── ROOT CONFIG & FONTS ── */
+        /* ── ROOT CONFIG & ENHANCED COLOR PALETTE ── */
         :root {
           --chrome-bright: #FFFFFF;
-          --chrome-mid: #A0B4C8;
-          --chrome-dark: #2A3644;
-          --chrome-accent: #00E5FF;
+          --chrome-mid: #B4CCE4;
+          --chrome-dark: #223244;
+          --chrome-accent: #00F5FF;
+          --cyan-glow: #00F5FF;
           --amber-fire: #FF7700;
-          --steel-plate: #0C121D;
+          --amber-glow: #FFAA00;
+          --neon-gold: #FFD700;
+          --laser-magenta: #FF0077;
+          --steel-plate: #09101A;
         }
 
         /* ── REALISTIC METALLIC CHROME BACKGROUND ── */
         .mechUniverse {
           min-height: 100vh;
+          min-height: 100dvh;
           background: 
-            radial-gradient(ellipse at 50% 0%, rgba(220, 235, 255, 0.16) 0%, transparent 60%),
-            radial-gradient(ellipse at 80% 80%, rgba(0, 229, 255, 0.14) 0%, transparent 50%),
-            radial-gradient(ellipse at 15% 70%, rgba(255, 120, 0, 0.10) 0%, transparent 45%),
+            radial-gradient(ellipse at 50% 0%, rgba(0, 245, 255, 0.20) 0%, transparent 60%),
+            radial-gradient(ellipse at 85% 80%, rgba(0, 245, 255, 0.18) 0%, transparent 50%),
+            radial-gradient(ellipse at 15% 70%, rgba(255, 119, 0, 0.16) 0%, transparent 45%),
+            radial-gradient(ellipse at 50% 50%, rgba(255, 215, 0, 0.06) 0%, transparent 65%),
             repeating-linear-gradient(
               135deg,
-              rgba(255, 255, 255, 0.025) 0px,
-              rgba(255, 255, 255, 0.025) 1px,
+              rgba(255, 255, 255, 0.035) 0px,
+              rgba(255, 255, 255, 0.035) 1px,
               transparent 1px,
               transparent 4px
             ),
-            linear-gradient(90deg, #0A101A 0%, #15202E 25%, #223246 50%, #15202E 75%, #0A101A 100%);
-          color: #DDE8F4;
+            linear-gradient(90deg, #070D16 0%, #111C2A 25%, #1C2B3C 50%, #111C2A 75%, #070D16 100%);
+          color: #E2EEF8;
           font-family: 'Rajdhani', sans-serif;
           position: relative;
           overflow-x: hidden;
@@ -2721,16 +2728,18 @@ export default function FreshersExperience({ mode = "auto" }: { mode?: "mobile" 
         .chromeShimmer {
           background: linear-gradient(
             90deg,
-            #8EA6BC 0%,
-            #FFFFFF 25%,
-            #00E5FF 50%,
+            #A8C5DF 0%,
+            #FFFFFF 18%,
+            #00F5FF 38%,
+            #FFD700 55%,
             #FFFFFF 75%,
-            #8EA6BC 100%
+            #A8C5DF 100%
           );
           background-size: 200% auto;
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
-          animation: chromeShimmerMove 4s linear infinite;
+          filter: drop-shadow(0 0 14px rgba(0, 245, 255, 0.45));
+          animation: chromeShimmerMove 3.2s linear infinite;
         }
         @keyframes chromeShimmerMove {
           to { background-position: 200% center; }
@@ -4162,26 +4171,426 @@ export default function FreshersExperience({ mode = "auto" }: { mode?: "mobile" 
           filter: url(#realisticTurbulentSmoke) drop-shadow(0 0 45px rgba(0, 0, 0, 0.9));
         }
 
-        /* ── RESPONSIVE TWEAKS ── */
-        @media (max-width: 600px) {
+        /* ── ENHANCED MOBILE & COMPREHENSIVE RESPONSIVE STYLES ── */
+        @media (max-width: 768px) {
+          .topUtilityBar {
+            padding: 8px 14px;
+          }
+          .deptBadge {
+            font-size: 11px;
+            letter-spacing: 1.2px;
+          }
+          .chromeAudioBtn {
+            padding: 5px 12px;
+            font-size: 10px;
+            letter-spacing: 1px;
+          }
+          .stageSection {
+            padding: 70px 14px 30px;
+          }
           .gearTrainContainer {
-            transform: scale(0.85);
-            margin: 0 auto 10px;
+            height: 260px;
+            transform: scale(min(0.78, calc((100vw - 28px) / 540)));
+            transform-origin: center center;
+            margin: 0 auto;
+          }
+          .questionCardArmor, .ignitionConsole, .welcomeToTheClubBanner, .invitationArmorPlate {
+            width: 100%;
+            max-width: 520px;
+          }
+          .eventBadgesGrid {
+            grid-template-columns: 1fr;
+            gap: 12px;
+          }
+          .bgTwinEngineCutaway {
+            width: 130px;
+            height: 175px;
+            left: -10px;
+            bottom: 15px;
+            opacity: 0.22 !important;
+          }
+          .bgRobotArmAssembly {
+            width: 135px;
+            height: 200px;
+            right: -10px;
+            bottom: 10px;
+            opacity: 0.22 !important;
+          }
+          .bgTurbochargerAssembly, .bgBremboBrakeAssembly {
+            display: none !important;
+          }
+        }
+
+        @media (max-width: 480px) {
+          html, body, .mechUniverse {
+            touch-action: manipulation;
+            -webkit-tap-highlight-color: transparent;
+          }
+          .chromePerimeterFrame {
+            inset: 4px;
+          }
+          .topUtilityBar {
+            padding: 8px 10px;
+            padding-top: max(8px, env(safe-area-inset-top));
+          }
+          .deptBadge {
+            font-size: 9.5px;
+            letter-spacing: 0.8px;
+            gap: 4px;
+          }
+          .chromeAudioBtn {
+            padding: 4px 9px;
+            font-size: 8.5px;
+            letter-spacing: 0.6px;
+          }
+          .stageSection {
+            padding: 60px 10px 24px;
+            min-height: 100vh;
+            min-height: 100dvh;
+          }
+
+          /* Stage 1: Gears */
+          .stageGearsHeader {
+            margin-bottom: 8px;
+          }
+          .subHeadingTag {
+            font-size: clamp(12px, 3.6vw, 15px);
+            letter-spacing: 1.5px;
+            line-height: 1.35;
+            margin-bottom: 4px;
+          }
+          .gearTrainContainer {
+            height: 215px;
+            max-width: 100%;
+            transform: scale(min(0.64, calc((100vw - 20px) / 540)));
+            transform-origin: center center;
+            margin: 0 auto;
+          }
+          .questionCardArmor {
+            width: 100%;
+            max-width: 100%;
+            border-radius: 14px;
+          }
+          .questionInner {
+            padding: 18px 12px 16px;
+            border-radius: 12px;
+          }
+          .qCardSub {
+            font-size: 9.5px;
+            letter-spacing: 2px;
+            margin-bottom: 6px;
+          }
+          .qCardTitle {
+            font-size: clamp(17px, 5vw, 22px);
+            line-height: 1.25;
+            margin-bottom: 16px;
+          }
+          .qActionButtons {
+            gap: 10px;
+            min-height: 48px;
+            flex-wrap: wrap;
+            justify-content: center;
+          }
+          .chromeYesBtn {
+            padding: 12px 24px;
+            font-size: 13px;
+            letter-spacing: 1px;
+            border-radius: 8px;
+            min-width: 135px;
+          }
+          .chromeNoBtn {
+            padding: 10px 18px;
+            font-size: 12px;
+            letter-spacing: 1px;
+            border-radius: 8px;
+          }
+          .noAttemptWarning {
+            font-size: 10px;
+            letter-spacing: 1px;
+            margin-top: 10px;
+          }
+
+          /* Stage 2: Engine */
+          .ignitionConsole {
+            padding: 16px 10px 14px;
+            border-radius: 14px;
+            width: 100%;
+            max-width: 100%;
+          }
+          .racingCluster {
+            padding: 10px 8px;
+            margin-bottom: 14px;
+            border-radius: 10px;
+          }
+          .shiftLightArray {
+            gap: 2px;
+            padding: 2px 3px;
+            margin-bottom: 8px;
+          }
+          .shiftLed {
+            height: 6px;
+          }
+          .digitalRpmDisplay {
+            margin-bottom: 4px;
+          }
+          .rpmDigits {
+            font-size: clamp(24px, 8.5vw, 34px);
+            letter-spacing: 1px;
+          }
+          .rpmUnit {
+            font-size: 11px;
+            letter-spacing: 1px;
+          }
+          .rpmScaleTicks {
+            font-size: 8px;
+          }
+          .rpmTachometer {
+            height: 8px;
+          }
+          .knurledChromeRing {
+            width: 135px;
+            height: 135px;
+            border-width: 3px;
+          }
+          .hexBolt {
+            width: 8px;
+            height: 8px;
+          }
+          .ignitionHalo {
+            width: 108px;
+            height: 108px;
+          }
+          .engineStartButton {
+            width: 94px;
+            height: 94px;
+          }
+          .btnSubTop {
+            font-size: 9px;
+            letter-spacing: 2px;
+          }
+          .btnMainText {
+            font-size: 17px;
+            letter-spacing: 2px;
+          }
+          .btnSubBottom {
+            font-size: 8.5px;
+            letter-spacing: 1px;
+          }
+          .engineQuotePlaque {
+            padding: 10px 12px 8px;
+            margin: 12px auto 2px;
+            width: 100%;
+            border-radius: 6px;
+          }
+          .quoteBadgeText {
+            font-size: 8.5px;
+            letter-spacing: 1.5px;
+          }
+          .quoteStatement {
+            font-size: 12px;
+            line-height: 1.4;
+          }
+          .quoteAuthor {
+            font-size: 8.5px;
+            letter-spacing: 1px;
+          }
+
+          /* Stage 3: Welcome */
+          .welcomeToTheClubBanner {
+            padding: 24px 12px 20px;
+            border-radius: 14px;
+            width: 100%;
+            max-width: 100%;
+            margin-bottom: 16px;
+          }
+          .voiceSoundWave {
+            height: 28px;
+            gap: 4px;
+            margin-bottom: 10px;
+          }
+          .welcomeSupTitle {
+            font-size: 14px;
+            letter-spacing: 5px;
+          }
+          .welcomeClubTitle {
+            font-size: clamp(22px, 7.5vw, 34px);
+            letter-spacing: clamp(3px, 1.5vw, 6px);
+            margin: 6px 0 0;
+          }
+          .welcomeNextWrap {
+            margin-top: 18px;
+            width: 100%;
+          }
+          .chromeActionBtn {
+            width: 100%;
+          }
+          .btnInnerChrome {
+            padding: 12px 14px;
+            font-size: 11.5px;
+            letter-spacing: 1px;
+            justify-content: center;
+            width: 100%;
+          }
+
+          /* Stage 4: Invitation */
+          .invitationHeader {
+            margin-bottom: 14px;
+          }
+          .eventMasterTitle {
+            font-size: clamp(24px, 8vw, 38px);
+          }
+          .yearMedallion {
+            padding: 2px 12px;
+            margin-top: 4px;
+          }
+          .yearText {
+            font-size: 15px;
+            letter-spacing: 5px;
+          }
+          .deptSubtitle {
+            font-size: 9.5px;
+            letter-spacing: 1.5px;
+            margin-top: 6px;
+          }
+          .invitationArmorPlate {
+            width: 100%;
+            max-width: 100%;
+            border-radius: 14px;
+            margin: 0 auto 18px;
+          }
+          .armorPlateInner {
+            padding: 18px 10px 16px;
+            border-radius: 12px;
+          }
+          .collegeLogoBezel {
+            width: 64px;
+            height: 64px;
+            padding: 4px;
+            margin-bottom: 8px;
+          }
+          .collegeHeading {
+            font-size: 10px;
+            letter-spacing: 0.8px;
+            line-height: 1.3;
+          }
+          .deptTagline {
+            font-size: 9px;
+            letter-spacing: 1px;
+          }
+          .chromePlateDivider {
+            margin: 12px 0;
+          }
+          .heartyWelcomeCard {
+            padding: 14px 8px;
+            margin: 10px 0 12px;
+            border-radius: 10px;
+          }
+          .welcomeBadgeText {
+            font-size: 8.5px;
+            letter-spacing: 1.5px;
+          }
+          .heartyWelcomeTitle {
+            font-size: clamp(16px, 5.2vw, 22px);
+            letter-spacing: 1px;
+            margin-bottom: 6px;
+          }
+          .heartyWelcomeSub {
+            font-size: 10.5px;
+            letter-spacing: 0.8px;
+            line-height: 1.35;
+          }
+          .eventBadgesGrid {
+            grid-template-columns: 1fr;
+            gap: 8px;
+            width: 100%;
+          }
+          .chromeBadgeCard {
+            padding: 10px 12px;
+            gap: 10px;
+            border-radius: 10px;
+          }
+          .badgeIconBox {
+            font-size: 18px;
+          }
+          .badgeLabel {
+            font-size: 8.5px;
+            letter-spacing: 1px;
+          }
+          .badgeValue {
+            font-size: 14px;
+            letter-spacing: 0.5px;
+          }
+          .badgeSub {
+            font-size: 8.5px;
+          }
+          .creedSection {
+            margin: 6px 0 12px;
+          }
+          .creedLine1, .creedLine2 {
+            font-size: 13px;
+            letter-spacing: 2px;
+          }
+          .creedSubPill {
+            font-size: 9px;
+            letter-spacing: 0.8px;
+            padding: 4px 10px;
+            line-height: 1.35;
+          }
+          .armorActionsBar {
+            flex-direction: column;
+            gap: 8px;
+            width: 100%;
+            margin-top: 6px;
+          }
+          .plateBtn {
+            width: 100%;
+            padding: 13px 12px;
+            font-size: 10.5px;
+            letter-spacing: 1px;
+            border-radius: 8px;
+            min-height: 46px;
+          }
+          .replaySection {
+            margin-top: 14px;
+          }
+          .replayExperienceBtn {
+            padding: 6px 12px;
+            font-size: 9px;
+            letter-spacing: 0.8px;
+          }
+
+          /* Background Assets on Mobile */
+          .bgTwinEngineCutaway {
+            width: 95px;
+            height: 130px;
+            left: -15px;
+            bottom: 5px;
+            opacity: 0.16 !important;
+            pointer-events: none;
+            filter: none !important;
+          }
+          .bgRobotArmAssembly {
+            width: 100px;
+            height: 145px;
+            right: -15px;
+            bottom: 5px;
+            opacity: 0.16 !important;
+            pointer-events: none;
+            filter: none !important;
+          }
+          .bgPatrolDrone {
+            width: 80px;
+            height: 60px;
+            left: 5%;
+            top: 45px;
+            opacity: 0.2 !important;
+            pointer-events: none;
+          }
+          .bgTurbochargerAssembly, .bgBremboBrakeAssembly {
+            display: none !important;
           }
           .heavyDoor {
             width: 50%;
-          }
-          .armorPlateInner {
-            padding: 25px 15px 20px;
-          }
-          .bgTwinEngineCutaway,
-          .bgRobotArmAssembly {
-            opacity: 0.35;
-            transform: scale(0.8);
-          }
-          .bgTurbochargerAssembly,
-          .bgBremboBrakeAssembly {
-            display: none;
           }
         }
       `}</style>
